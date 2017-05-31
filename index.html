@@ -4,16 +4,13 @@
 	<title>2D Particles</title>
 </head>
 <body>
-
 	<canvas id="canvas" width="900 px" height="600 px"></canvas>
-
 	<script>
 		var canvas =  document.getElementById('canvas'),
 			c = canvas.getContext('2d'),
 			particles = {},
 			particleIndex = 0,
 			particleNum = 3;
-
 		c.fillStyle = '#000000';
 		c.fillRect(0,0,canvas.width,canvas.height);
 
@@ -28,21 +25,16 @@
 			this.id = particleIndex;
 			this.duration = 0;
 			this.maxDuration = 100;
-
-
 		};
-
+		
 		Particle.prototype.draw = function(){
 			this.posX += this.vx;
 			this.posY += this.vy;
 			this.vy += this.gravity; 
 			this.duration++;
-			
-
 			if (this.duration >= this.maxDuration) {
 				 delete particles[this.id];
 			}
-
 			if (this.duration < 20) {
 				c.fillStyle = "#ff0"
 			} else if (this.duration < 60){
@@ -50,15 +42,12 @@
 			} else (
 				c.fillStyle = "#500"
 			);
-
 			c.fillRect(this.posX, this.posY, 2, 2);
-
 			if (this.posY > 550) {
 				this.vy *= -0.3;
 				this.vx *= 0.9;
 				this.posY = 550;
 			}
-
 		}
 
 		// var posX = canvas.width / 2,
@@ -70,14 +59,11 @@
 		// var p = new Particle();
 
 		setInterval(function(){
-
 			c.fillStyle = 'rgba(0,0,0,0.5)';
 			c.fillRect(0,0,canvas.width,canvas.height);
-
 			for (var i = 0; i < particleNum; i++){
 				new Particle();
 			}
-
 			for (var i in particles) {
 				particles[i].draw();
 				console.log(particles.length);
@@ -101,9 +87,6 @@
 			// c.fillRect(posX,posY,5,5);
 
 		}, 30);
-
-
 	</script>
-
 </body>
 </html>
