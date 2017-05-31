@@ -2,6 +2,4 @@
 
 Canvas Sandbox
 
-# Preview
-
-
+https://warynski.github.io/canvas-particles/
